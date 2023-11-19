@@ -1,1 +1,1 @@
-# dev_templates
+# Here you will find webpack templates ready for use development
