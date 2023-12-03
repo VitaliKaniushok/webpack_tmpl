@@ -11,6 +11,11 @@ import AvatarSvg from '@src/assets/avatar-svg.svg'
 export const App = () => {
    const [count, setCount] = useState<number>(0)
 
+   // TREE SHAKING 
+   if (__PLATFORM__ == 'mobile') {
+      return <h1>Mobile patform</h1>
+   }
+
    return (
       <>
          <h1>platfom: {__PLATFORM__}</h1>
@@ -23,7 +28,8 @@ export const App = () => {
             <AvatarSvg color='red' width={200} height={100}/>
          </div>
 
-         <Link to={'/about'}>About</Link>
+         <Link to={'/about'}>About us</Link>
+         <br />
          <Link to={'/shop'}>Shop</Link>
 
          <h1 className={classes.title}>
