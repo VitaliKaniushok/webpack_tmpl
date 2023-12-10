@@ -1,6 +1,6 @@
 import { ModuleOptions } from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import ReactRefreshTypeScript from "react-refresh-typescript";
+// import ReactRefreshTypeScript from "react-refresh-typescript";\
 
 import {buildBabelLoader} from './babel/buildBabelLoader'
 
@@ -62,24 +62,24 @@ export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
   //    exclude: /node_modules/,
   // }
 
-  const tsLoader = {
-    //  Umie obslugiwac JSX
-    // Gdyby nie był używany typescript, potrzebny był by babel-loader
-    test: /\.tsx?$/,
-    exclude: /node_modules/,
+  // const tsLoader = {
+  //   //  Umie obslugiwac JSX
+  //   // Gdyby nie był używany typescript, potrzebny był by babel-loader
+  //   test: /\.tsx?$/,
+  //   exclude: /node_modules/,
 
-    use: [
-      {
-        loader: "ts-loader",
-        options: {
-          getCustomTransformers: () => ({
-            before: [isDev && ReactRefreshTypeScript()].filter(Boolean),
-          }),
-          transpileOnly: true, // nie sprawdza typy w typiscript pod czas kompilacji co przyspiesza ją
-        },
-      },
-    ],
-  };
+  //   use: [
+  //     {
+  //       loader: "ts-loader",
+  //       options: {
+  //         getCustomTransformers: () => ({
+  //           before: [isDev && ReactRefreshTypeScript()].filter(Boolean), // wprowadza zmiany bez przeładowania strony jeżeli używany z ts-loader bez babel
+  //         }),
+  //         transpileOnly: true, // nie sprawdza typy w typiscript pod czas kompilacji co przyspiesza ją, ale wtedy do sprawdzenia typów oddzielnie od kompilacji najlepiej urzyć "fork-ts-checker-webpack-plugin"
+  //       },
+  //     },
+  //   ],
+  // };
 
   const babelLoader = buildBabelLoader(options)
 

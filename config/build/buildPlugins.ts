@@ -30,7 +30,7 @@ export function buildPlugins({mode, paths, analizer, platform}: BuildOptions): C
    if (isDev) {
       plugins.push(new webpack.ProgressPlugin()) // slove
       plugins.push(new ForkTsCheckerWebpackPlugin()) // Sprawdza typy w typescrip oddzielnie od kompilacji
-      plugins.push(new ReactRefreshWebpackPlugin()) // wprowadza zmiany bez przeładowania strony
+      plugins.push(new ReactRefreshWebpackPlugin()) // wprowadza zmiany bez przeładowania strony jeżeli używany używany z ts-loader albo babel
    }
 
    if (isProd) {
@@ -40,7 +40,7 @@ export function buildPlugins({mode, paths, analizer, platform}: BuildOptions): C
       }))
       plugins.push(new CopyPlugin({
          patterns: [
-           {from: path.resolve(paths.public, 'locale'), to: path.resolve(paths.output, 'locale')},
+           {from: path.resolve(paths.public, 'locale'), to: path.resolve(paths.output, 'locale')}, //kopiuje pliki do zbildowanego folderu 
          ],
        }),)
    }

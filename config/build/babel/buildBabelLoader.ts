@@ -27,10 +27,10 @@ export function buildBabelLoader({mode}: BuildOptions) {
                "@babel/preset-env",
                "@babel/preset-typescript",
                [
-               "@babel/preset-react",
-               {
-                  runtime: isDev ? "automatic" : "classic", //dla działania hot reload
-               },
+                  "@babel/preset-react",
+                  {
+                     runtime: isDev ? "automatic" : "classic", //dla działania hot reload
+                  },
                ],
             ],
             plugins: plugins.length ? plugins : undefined

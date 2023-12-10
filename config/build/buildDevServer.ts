@@ -8,6 +8,6 @@ export function buildDevServer(options: BuildOptions): DevServerConfiguration {
       open: true,
       //historyApiFallback - jeżeli oddawać static poprzez nginx to trzeba robić proxy na index.html
       historyApiFallback: true,
-      hot: true, 
+      hot: true, // hot replacement
    }
 }
